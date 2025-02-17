@@ -64,9 +64,12 @@ class App:
                 self.core.stop_previous_request()
 
                 # ensures all threads are joined before force quit (my code)
-                for thread in threading.enumerate():
-                    if thread != threading.main_thread():
-                        thread.join(timeout=2)
+                try:
+                    for thread in threading.enumerate():
+                        if thread != threading.main_thread():
+                            thread.join(timeout=2)
+                except Exception as e:
+                    continue
 
             else:
                 threading.Thread(target=self.core.execute_user_request, args=(user_request,), daemon=True).start()
