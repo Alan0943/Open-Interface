@@ -63,7 +63,7 @@ class App:
             if user_request == 'stop':
                 self.core.stop_previous_request()
 
-                # ensures all threads are joined before force quit
+                # ensures all threads are joined before force quit (my code)
                 for thread in threading.enumerate():
                     if thread != threading.main_thread():
                         thread.join(timeout=2)

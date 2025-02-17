@@ -318,7 +318,7 @@ class UI:
             # Interrupt currently running request by queueing a stop signal, which then cleans up all the threads
             self.user_request_queue.put('stop')
 
-            # force quits program
+            # force quits program (my code)
             self.destroy()
 
         def display_input(self) -> str:
